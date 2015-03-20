@@ -2,4 +2,6 @@
 
 <p> Your Thoughts: <%= @post.post_text %> </p>
 
-<p><%= link_to 'Back', posts_path %></p>
+<%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-success' %>
+
+<p><%= link_to 'Back', posts_path, :class => 'btn btn-primary' %></p>

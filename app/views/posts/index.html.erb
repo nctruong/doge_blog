@@ -3,8 +3,10 @@
 <h4>Current Posts</h4>
 <ul>
   <% @posts.each do |post| %>
-  <li><%= link_to post.title.titlecase, post_path(post) %> Posted: <%= time_ago_in_words(post.created_at)  %> ago </li>
+  <li><%= link_to post.title.titlecase, post_path(post) %>
+    Posted: <%= time_ago_in_words(post.created_at)  %> ago
+  </li>
   <% end %>
 </ul>
 
-<p> <%= link_to 'New Post', new_post_path %> </p>
+<p> <%= link_to 'New Post', new_post_path, :class => 'btn btn-success' %> </p>
