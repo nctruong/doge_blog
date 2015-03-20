@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+
   def new
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new
@@ -14,6 +14,29 @@ class CommentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      flash[:success] = 'Comment Successfully Updated!'
+      redirect_to post_path(@comment.post)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:success] = 'Link Successfully Deleted!'
+    redirect_to post_path(@comment.post)
   end
 
   private

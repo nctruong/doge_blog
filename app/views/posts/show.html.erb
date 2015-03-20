@@ -13,7 +13,14 @@
   <h6>Comments for: <%= @post.title %> </h6>
   <ul>
     <% @post.comments.each do |comment| %>
-    <li><%= comment.user_name %> <%= comment.comment_text %></li>
+    <li>
+      Posted By: <%= comment.user_name %><br>
+      <%= comment.comment_text %>
+      <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
+      <%= link_to '(delete)', post_comment_path(@post, comment),
+                            :data => {:confirm => 'Are you sure?',
+                            :method => 'delete' } %>
+    </li>
     <% end %>
   </ul>
 <% else %>
