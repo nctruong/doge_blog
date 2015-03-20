@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      flash[:success] = 'Comment Successfully Updated!'
+      flash[:success] = 'Comment Updated!'
       redirect_to post_path(@comment.post)
     else
       render :edit
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:success] = 'Link Successfully Deleted!'
+    flash[:success] = 'Comment Deleted!'
     redirect_to post_path(@comment.post)
   end
 

@@ -1,6 +1,7 @@
-<h1>Post Title: <%= @post.title %></h1>
+<h2>Post Title: <%= @post.title %></h2>
+<h4>Posted On: <%= @post.created_at  %></h4>
 
-<p> Your Thoughts: <%= @post.post_text %> </p>
+<p><%= @post.post_text %> </p>
 
 <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary' %>
 <%= link_to 'Delete', post_path(@post),
@@ -13,14 +14,14 @@
   <h6>Comments for: <%= @post.title %> </h6>
   <ul>
     <% @post.comments.each do |comment| %>
-    <li>
-      Posted By: <%= comment.user_name %><br>
-      <%= comment.comment_text %>
-      <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
-      <%= link_to '(delete)', post_comment_path(@post, comment),
-                            :data => {:confirm => 'Are you sure?',
-                            :method => 'delete' } %>
-    </li>
+      <li>
+        Posted By: <%= comment.user_name %><br>
+        <%= comment.comment_text %>
+        <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
+        <%= link_to '(delete)', post_comment_path(@post, comment),
+                              :data => {:confirm => 'Are you sure?',
+                              :method => 'delete' } %>
+      </li>
     <% end %>
   </ul>
 <% else %>

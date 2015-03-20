@@ -8,8 +8,9 @@
 </head>
 <body>
 
-<%= flash[:success] %>
-<%= flash[:danger] %>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
 
 <div class="container">
   <%= yield %>
