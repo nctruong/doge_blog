@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe "the post deletion process" do
   it "deletes a post" do
     post = Post.create(:title => 'My Thoughts Today', :post_text => 'Wow such integration testing!')
