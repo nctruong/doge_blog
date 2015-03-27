@@ -3,12 +3,15 @@
 
 <p><%= @post.post_text %> </p>
 
-<%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary' %>
-<%= link_to 'Delete', post_path(@post),
+<% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary' %>
+  <%= link_to 'Delete', post_path(@post),
                       :data => {:confirm => 'Are you sure?',
                       :method => 'delete' }, :class => 'btn btn-danger' %>
-
-<%= link_to 'Add Comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>
+  <%= link_to 'Add Comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>
+<% elsif user_signed_in? %>
+  <%= link_to 'Add Comment', new_post_comment_path(@post), :class => 'btn btn-primary' %>
+<% end %>
 <hr>
 <% if @post.comments.any? %>
   <h6>Comments for: <%= @post.title %> </h6>
@@ -17,14 +20,17 @@
       <li>
         Posted By: <%= comment.user_name %><br>
         <%= comment.comment_text %>
-        <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
-        <%= link_to '(delete)', post_comment_path(@post, comment),
+        <% if user_signed_in? && current_user.username == comment.user_name %>
+          <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
+          <%= link_to '(delete)', post_comment_path(@post, comment),
                               :data => {:confirm => 'Are you sure?',
                               :method => 'delete' } %>
+        <% end %>
       </li>
     <% end %>
   </ul>
-<% else %>
+<% elsif user_signed_in? %>
+  <hr>
   <h6>Be The First To Comment!</h6>
 <% end %>
 <hr>
