@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_filter :authenticate_user!, except: [:index, :show]
+
   def index
     @posts = Post.all
   end
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = "Post Added!"
       redirect_to posts_path
@@ -28,7 +30,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+    if current_user.id == @post.user_id
+      @post.update(post_params)
       flash[:success] = 'Post Successfully Updated!'
       redirect_to post_path
     else
@@ -38,13 +41,18 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:success] = 'Link Successfully Deleted!'
-    redirect_to posts_path
+    if current_user.id == @post.user_id
+      @post.destroy
+      flash[:success] = 'Post Successfully Deleted!'
+      redirect_to posts_path
+    else
+      flash[:danger] = "Not So Fast!"
+      redirect_to posts_path
+    end
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :post_text)
+    params.require(:post).permit(:title, :post_text, :username)
   end
 end
