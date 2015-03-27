@@ -8,6 +8,8 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'devise'
+gem 'factory_girl_rails'
 
 group :development do
   gem 'byebug'
