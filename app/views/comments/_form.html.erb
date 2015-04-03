@@ -1,6 +1,6 @@
 <%= render('layouts/errors', :object => @comment) %>
-<div class="well">
-  <%= form_for [@post, @comment] do |f| %>
+<div class="well" id="new_comment_form">
+  <%= form_for [@post, @comment], remote: true do |f| %>
     <div class="form-group">
       <%= f.label :comment_text, 'Comment Text' %>
       <%= f.text_area :comment_text, rows: 5, :placeholder => 'Enter Comment', :class => 'form-control' %>
