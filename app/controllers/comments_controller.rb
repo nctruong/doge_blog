@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
+      redirect_to post_path(@comment.post)
       flash[:success] = 'Comment Updated!'
     else
       render :edit
