@@ -15,6 +15,7 @@ FactoryGirl.define do
 
   factory(:comment) do
     user_name('doge')
+    user_id('1')
     comment_text('Such agree, wow!')
     post
   end
