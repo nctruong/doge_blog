@@ -1,0 +1,10 @@
+<li>
+  Posted By: <%= comment.user_name %><br>
+  <%= comment.comment_text %>
+  <% if user_signed_in? && current_user.username == comment.user_name %>
+    <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
+    <%= link_to '(delete)', post_comment_path(@post, comment),
+                            :data => {:confirm => 'Are you sure?',
+                            :method => 'delete' } %>
+  <% end %>
+</li>
