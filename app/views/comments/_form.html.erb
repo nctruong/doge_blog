@@ -1,4 +1,5 @@
 <%= render('layouts/errors', :object => @comment) %>
+
 <div class="well" id="new_comment_form">
   <%= form_for [@post, @comment], remote: true do |f| %>
     <div class="form-group">
