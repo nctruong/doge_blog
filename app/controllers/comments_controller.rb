@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_filter :authenticate_user!, except: [:index, :show]
+
   def new
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new
@@ -9,8 +11,10 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     if @comment.save
-      flash[:success] = 'Comment Saved!'
-      redirect_to post_path(@comment.post)
+      respond_to do |format|
+        format.html { redirect_to post_path(@comment.post) }
+        format.js
+      end
     else
       render :new
     end
@@ -22,6 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       flash[:success] = 'Comment Updated!'
