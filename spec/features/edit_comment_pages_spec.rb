@@ -5,6 +5,7 @@ describe "the edit comment process" do
     comment = FactoryGirl.create(:comment)
     sign_in(comment.post.user)
     visit post_path(comment.post)
+    save_and_open_page
     click_on '(edit)'
     fill_in 'Comment Text', with: "Different Stuff!"
     click_on 'Update Comment'
