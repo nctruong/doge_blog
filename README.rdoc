@@ -1,28 +1,22 @@
-== README
+## Ruby On Rails Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Allows a user to post blog entries with comment support and text message notifications.
+``
+On Heroku:
+https://sleepy-hamlet-7255.herokuapp.com/
+``
+### Setup Instructions
+Requires PostgreSQL
 
-Things you may want to cover:
+### Authors
+Tyler Whitsett
 
-* Ruby version
+#### License
 
-* System dependencies
+Copyright (C) 2015 Tyler Whitsett
 
-* Configuration
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-* Database creation
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
