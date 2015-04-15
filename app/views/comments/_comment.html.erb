@@ -6,12 +6,12 @@
   <td>
     <%= comment.comment_text %>
   </td>
-  <td colspan="1" width="5%" align="center" id="comment-functions">
-    <% if user_signed_in? && current_user.id == comment.user_id%>
+  <% if user_signed_in? && current_user.id == comment.user_id%>
+    <td colspan="1" width="5%" align="center" id="comment-functions">
       <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
       <%= link_to '(delete)', post_comment_path(@post, comment),
                               :data => {:confirm => 'Are you sure?',
-                              :method => 'delete' } %>
-    <% end %>
-  </td>
+                                :method => 'delete' } %>
+    </td>
+  <% end %>
 </tr>
