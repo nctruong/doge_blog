@@ -1,4 +1,5 @@
-<li>
+<!-- <li>
+  <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar' %>
   Posted By: <%= comment.user.username %><br>
   <%= comment.comment_text %>
   <% if user_signed_in? && current_user.id == comment.user_id%>
@@ -7,4 +8,14 @@
                             :data => {:confirm => 'Are you sure?',
                             :method => 'delete' } %>
   <% end %>
-</li>
+</li> -->
+
+<tr>
+  <td  colspan="1" width="5%">
+    <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar-comments' %>
+  </td>
+  <td>
+    Posted By: <%= comment.user.username %><br>
+    <%= comment.comment_text %>
+  </td>
+</tr>
