@@ -10,9 +10,6 @@
       <%= f.label :post_text, 'Post Text' %>
       <%= f.text_area :post_text, rows: 5, :placeholder => 'Enter Comment', :class => 'form-control' %>
     </div>
-    <div class="form-group">
-      <%= f.hidden_field :username, value: current_user.username %>
-    </div>
     <%=f.submit :class => 'btn btn-success' %>
   <% end %>
 </div>

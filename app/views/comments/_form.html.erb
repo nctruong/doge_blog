@@ -6,7 +6,6 @@
       <%= f.label :comment_text, 'Comment Text' %>
       <%= f.text_area :comment_text, rows: 5, :placeholder => 'Enter Comment', :class => 'form-control' %>
     </div>
-    <%= f.hidden_field :user_name, value: current_user.username %>
     <%= f.submit :class => 'btn btn-success' %>
   <% end %>
 </div>

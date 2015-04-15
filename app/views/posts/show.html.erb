@@ -1,28 +1,47 @@
-<h2>Post Title: <%= @post.title %></h2>
-<h4>Posted On: <%= @post.created_at  %></h4>
-
-<p><%= @post.post_text %> </p>
-
-<% if user_signed_in? && current_user.id == @post.user_id %>
-  <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary' %>
-  <%= link_to 'Delete', post_path(@post),
-                      :data => {:confirm => 'Are you sure?',
-                      :method => 'delete' }, :class => 'btn btn-danger' %>
-  <%= link_to 'Add Comment', new_post_comment_path(@post), :class => 'btn btn-primary', id: "new_comment_link", remote: true %>
-<% elsif user_signed_in? %>
-  <%= link_to 'Add Comment', new_post_comment_path(@post), :class => 'btn btn-primary', id: "new_comment_link", remote: true %>
-<% end %>
+<table>
+  <tr>
+    <td>
+      <%= image_tag @post.user.avatar.url(:thumb), class: 'title-avatar' %>
+    </td>
+    <td>
+      <h3 id="post-title-header">Post Title: <%= @post.title %></h3>
+      <h4 id="post-title-date">Posted On: <%= @post.created_at %></h4>
+    </td>
+  </tr>
+</table>
 
 <hr>
 
-<h4>Comments for: <%= @post.title %> </h4>
-<ul id="current_comments">
-  <%= render @post.comments %>
-</ul>
+<div class="container row">
+  <p><%= @post.post_text %> </p>
 
-<% if @post.comments.count < 1 %>
-  <h6 id="comment_empty">Be The First To Comment!</h6>
-<% end %>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+    <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary' %>
+    <%= link_to 'Delete', post_path(@post),
+                        :data => {:confirm => 'Are you sure?',
+                        :method => 'delete' }, :class => 'btn btn-danger' %>
+  <% end %>
+</div>
+
+<hr>
+
+<div class="container row">
+
+  <h4>Comments for: <%= @post.title %>
+    <% if user_signed_in? %>
+      <%= link_to 'Add Comment', new_post_comment_path(@post), :class => 'btn btn-primary btn-xs', id: "new_comment_link", remote: true %>
+    <% end %>
+  </h4>
+
+  <ul id="current_comments">
+    <%= render @post.comments %>
+  </ul>
+
+  <% if @post.comments.none? %>
+    <h6 id="comment_empty">Be The First To Comment!</h6>
+  <% end %>
+
+</div>
 
 <hr>
 

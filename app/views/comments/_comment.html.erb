@@ -1,5 +1,5 @@
 <li>
-  Posted By: <%= comment.user_name %><br>
+  Posted By: <%= comment.user.username %><br>
   <%= comment.comment_text %>
   <% if user_signed_in? && current_user.id == comment.user_id%>
     <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
