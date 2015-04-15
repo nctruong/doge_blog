@@ -15,3 +15,22 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.title-avatar {
+  border-right: 1px solid grey;
+  padding-right: 15px;
+  display: inline;
+}
+
+#post-title-header {
+  margin: 0px;
+  padding-left: 15px;
+}
+
+#post-title-date {
+  margin: 0px;
+  padding-left: 15px;
+}
+td#comment-functions {
+  vertical-align: middle;
+}

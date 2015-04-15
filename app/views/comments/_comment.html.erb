@@ -1,21 +1,17 @@
-<!-- <li>
-  <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar' %>
-  Posted By: <%= comment.user.username %><br>
-  <%= comment.comment_text %>
-  <% if user_signed_in? && current_user.id == comment.user_id%>
-    <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
-    <%= link_to '(delete)', post_comment_path(@post, comment),
-                            :data => {:confirm => 'Are you sure?',
-                            :method => 'delete' } %>
-  <% end %>
-</li> -->
-
 <tr>
-  <td  colspan="1" width="5%">
+  <td  colspan="1" width="5%" align="center">
     <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar-comments' %>
+    <small><%= comment.user.username %></small>
   </td>
   <td>
-    Posted By: <%= comment.user.username %><br>
     <%= comment.comment_text %>
+  </td>
+  <td colspan="1" width="5%" align="center" id="comment-functions">
+    <% if user_signed_in? && current_user.id == comment.user_id%>
+      <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
+      <%= link_to '(delete)', post_comment_path(@post, comment),
+                              :data => {:confirm => 'Are you sure?',
+                              :method => 'delete' } %>
+    <% end %>
   </td>
 </tr>
