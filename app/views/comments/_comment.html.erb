@@ -13,17 +13,21 @@
                               :data => {:confirm => 'Are you sure?',
                               :method => 'delete' } %>
     </td>
+  <% elsif user_signed_in? %>
+    <td colspan="1" width="5%" align="center" id="comment-functions">
+      <%= link_to posts_path do %>
+        <span class='glyphicon glyphicon-arrow-up'></span>
+      <% end %>
+      <br>
+      |  <%= comment.user.comments.count %>  |
+      <br>
+      <%= link_to posts_path do %>
+        <span class='glyphicon glyphicon-arrow-down'></span>
+      <% end %>
+    </td>
   <% else %>
-  <td colspan="1" width="5%" align="center" id="comment-functions">
-    <%= link_to posts_path do %>
-      <span class='glyphicon glyphicon-arrow-up'></span>
-    <% end %>
-    <br>
-    |  <%= comment.user.comments.count %>  |
-    <br>
-    <%= link_to posts_path do %>
-      <span class='glyphicon glyphicon-arrow-down'></span>
-    <% end %>
-  </td>
+    <td colspan="1" width="5%" align="center" id="comment-functions">
+      <span class="label label-default"><%= comment.user.comments.count %></span>
+    </td>
   <% end %>
 </tr>
