@@ -8,14 +8,14 @@ describe "the new user sign up process" do
     fill_in "Username", with: "Doge"
     fill_in "Password", with: "12345678"
     fill_in "Password confirmation", with: "12345678"
-    click_on "Sign up"
+    click_on "Create Account"
     expect(page).to have_content 'Welcome!'
   end
 
   it "displays an error when fields are blank or incorrect" do
     visit root_path
     click_on "Sign Up"
-    click_on "Sign up"
+    click_on "Create Account"
     expect(page).to have_content 'errors'
   end
 end
