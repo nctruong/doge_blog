@@ -1,5 +1,5 @@
 <tr>
-  <td  colspan="1" width="5%" align="center">
+  <td colspan="1" width="5%" align="center">
     <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar-comments' %>
     <small><%= comment.user.username %></small>
   </td>
@@ -11,7 +11,19 @@
       <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
       <%= link_to '(delete)', post_comment_path(@post, comment),
                               :data => {:confirm => 'Are you sure?',
-                                :method => 'delete' } %>
+                              :method => 'delete' } %>
     </td>
+  <% else %>
+  <td colspan="1" width="5%" align="center" id="comment-functions">
+    <%= link_to posts_path do %>
+      <span class='glyphicon glyphicon-arrow-up'></span>
+    <% end %>
+    <br>
+    |  <%= comment.user.comments.count %>  |
+    <br>
+    <%= link_to posts_path do %>
+      <span class='glyphicon glyphicon-arrow-down'></span>
+    <% end %>
+  </td>
   <% end %>
 </tr>
