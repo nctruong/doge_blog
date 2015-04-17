@@ -1,10 +1,10 @@
 <%= render('layouts/errors', :object => @comment) %>
 <p></p>
-<div class="well" id="new_comment_form">
+<div class="well well-sm" id="new_comment_form">
   <%= form_for [@post, @comment], remote: true do |f| %>
     <div class="form-group">
-      <%= f.label :comment_text, 'Comment Text' %>
-      <%= f.text_area :comment_text, rows: 5, :placeholder => 'Enter Comment', :class => 'form-control' %>
+      <%= f.label :comment_text, 'Comment Text', class: 'small' %>
+      <%= f.text_area :comment_text, rows: 3, :placeholder => 'Enter Comment', :class => 'form-control' %>
     </div>
     <%= f.submit :class => 'btn btn-success btn-xs' %>
   <% end %>

@@ -16,6 +16,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+// Avatars
+
 .title-avatar {
   border-right: 1px solid grey;
   padding-right: 15px;
@@ -24,6 +26,8 @@
 .main-avatar {
   border: 1px dotted #ccc;
 }
+
+// Post Title Display
 
 #post-title-header {
   margin: 0px;
@@ -34,6 +38,26 @@
   margin: 0px;
   padding-left: 15px;
 }
+
+// Comment Display
+#current_comments {
+  background-color: #fff;
+}
+#user-comment-name {
+  font-size: 70%;
+}
+#user-comment-count {
+  font-size: 65%;
+}
 td#comment-functions {
   vertical-align: middle;
+}
+#comment-timestamp {
+  float:right;
+  font-size: 70%;
+}
+// Comment Form
+
+#new_comment_form {
+  background-color: #fff;
 }
