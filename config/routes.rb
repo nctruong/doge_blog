@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root :to => 'posts#index'
 
   resources :posts do
-    resources :comments, :except => [:index]
+    resources :votes, :only => [:create, :destroy]
+    resources :comments, :except => [:index] do
+      resources :votes, :only => [:create, :destroy]
+    end
   end
 end
