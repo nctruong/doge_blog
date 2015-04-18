@@ -18,7 +18,7 @@
   <% elsif user_signed_in? %>
     <td colspan="1" width="10%" align="center" id="comment-functions">
 
-      <%= button_to post_comment_votes(comment) do %>
+      <%= button_to post_path(@post) do %>
         <span class='glyphicon glyphicon-arrow-up'></span>
       <% end %>
 
