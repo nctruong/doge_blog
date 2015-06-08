@@ -18,20 +18,26 @@
   <% elsif user_signed_in? %>
     <td colspan="1" width="10%" align="center" id="comment-functions">
 
-      <%= button_to post_comment_upvote_path(@post, comment) do %>
+      <%= link_to post_comment_vote_path(@post, comment, upvote: true), method: 'post' do %>
         <span class='glyphicon glyphicon-arrow-up'></span>
       <% end %>
 
-      <%= comment.votes.count %>
+      <br>
 
-      <%= button_to post_comment_downvote_path(@post, comment) do %>
+      <%= comment.total_score %> |
+      <%= comment.up_votes %> /
+      <%= comment.down_votes %>
+
+      <br>
+
+      <%= link_to post_comment_vote_path(@post, comment, upvote: false), method: 'post' do %>
         <span class='glyphicon glyphicon-arrow-down'></span>
       <% end %>
 
     </td>
   <% else %>
     <td colspan="1" width="10%" align="center" id="comment-functions">
-      <span class="label label-default"><%= comment.user.comments.count %></span>
+      <span class="label label-default"><%= comment.votes.count %></span>
     </td>
   <% end %>
 </tr>

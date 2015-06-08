@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
   has_many :votes, :as => :voteable
   validates :title, presence: true
   validates :post_text, presence: true
+
 end
