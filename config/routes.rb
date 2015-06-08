@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, :except => [:index] do
-      post 'upvote'
-      post 'downvote'
+      post 'vote'
     end
   end
 end
