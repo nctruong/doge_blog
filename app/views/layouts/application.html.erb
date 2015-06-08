@@ -35,12 +35,10 @@
   </div>
 </nav>
 
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
-
 <div class="container">
+  <%= render "layouts/messages" %>
   <%= yield %>
+  <!-- <%= render "layouts/footer" %> -->
 </div>
 
 </body>
