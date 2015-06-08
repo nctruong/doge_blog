@@ -1,5 +1,10 @@
+$('#comments-title-heading').hide();
 $('#new_comment_link').hide().after('<%= j render("form") %>');
 $( "#just_kidding" ).click(function() {
   $('#new_comment_form').remove();
+  $('#comments-title-heading').show();
   $('#new_comment_link').show();
+});
+$('#new_comment_form').submit(function() {
+  $('#comments-title-heading').show();
 });

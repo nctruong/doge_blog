@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root :to => 'posts#index'
 
   resources :posts do
-    resources :votes, :only => [:create, :destroy]
     resources :comments, :except => [:index] do
-      resources :votes, :only => [:create, :destroy]
+      post 'upvote'
+      post 'downvote'
     end
   end
 end

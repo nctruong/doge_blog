@@ -2,7 +2,7 @@
   <td colspan="1" width="10%" align="center">
     <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar-comments' %><br>
     <small id="user-comment-name"><%= comment.user.username %></small><br>
-    <small id="user-comment-count">comments: <%= comment.user.posts.count %></small>
+    <small id="user-comment-count">comments: <%= comment.user.comments.count %></small>
   </td>
   <td>
     <small id="comment-timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago on <%= comment.created_at.to_date %></small>
@@ -18,13 +18,13 @@
   <% elsif user_signed_in? %>
     <td colspan="1" width="10%" align="center" id="comment-functions">
 
-      <%= button_to post_path(@post) do %>
+      <%= button_to post_comment_upvote_path(@post, comment) do %>
         <span class='glyphicon glyphicon-arrow-up'></span>
       <% end %>
 
-        <%= comment.votes.count %>
+      <%= comment.votes.count %>
 
-      <%= button_to post_path(@post) do %>
+      <%= button_to post_comment_downvote_path(@post, comment) do %>
         <span class='glyphicon glyphicon-arrow-down'></span>
       <% end %>
 

@@ -45,6 +45,31 @@ class CommentsController < ApplicationController
     redirect_to post_path(@comment.post)
   end
 
+  def upvote
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:comment_id])
+    vote = Vote.create(voteable: @comment, user_id: current_user.id)
+    if vote.valid?
+      redirect_to post_path(@post)
+      flash[:success] = "Vote Created!"
+    else
+      redirect_to post_path(@post)
+      flash[:danger] = "You Already Voted!"
+    end
+  end
+
+  def downvote
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:comment_id])
+    @vote = @comment.votes.last
+    if @vote.destroy
+      redirect_to post_path(@comment.post)
+      flash[:danger] = "Down Voted!"
+    else
+      render :new
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:comment_text)
