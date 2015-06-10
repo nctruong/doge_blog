@@ -1,6 +1,6 @@
 <tr>
   <td colspan="1" width="10%" align="center">
-    <%= image_tag comment.user.avatar.url(:comment), class: 'title-avatar-comments' %><br>
+    <%= image_tag comment.user.avatar.url(:comment) %><br>
     <small id="user-comment-name"><%= comment.user.username %></small><br>
     <small id="user-comment-count">comments: <%= comment.user.comments.count %></small>
   </td>
@@ -37,7 +37,7 @@
     </td>
   <% else %>
     <td colspan="1" width="10%" align="center" id="comment-functions">
-      <span class="label label-default"><%= comment.votes.count %></span>
+      <span class="label label-default"><%= comment.total_score %></span>
     </td>
   <% end %>
 </tr>

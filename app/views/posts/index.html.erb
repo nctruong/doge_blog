@@ -1,27 +1,41 @@
-<% if user_signed_in? %>
-  <%= image_tag current_user.avatar.url(:thumb) %>
-  <h4>Hello <%= current_user.username %>! </h4>
-<% end %>
-
-<% if @posts.any? %>
-<h5>Doge Thoughts</h5>
-  <ol>
-    <% @posts.each do |post| %>
-      <li> <%= link_to post.title, post_path(post) %> Posted By: <%= post.user.username %>
-        <% if user_signed_in? && current_user.id == post.user_id %>
-          <small><%= link_to '(delete)', post_path(post),
-                                        :data => {:confirm => 'Are you sure?',
-                                        :method => 'delete' } %></small>
-        <% end %>
-      </li>
-    <% end %>
-  </ol>
-<% else %>
-  <h5>Wow Such Empty!</h5>
-<% end %>
+<div class="row">
+  <% if user_signed_in? %>
+    <div class="post-index-user">
+      <div class="col-md-6">
+        <h4>Hello <%= current_user.username %>! </h4>
+      </div>
+      <div class="col-md-6">
+        <%= link_to "Make Post", new_post_path, class: 'btn btn-success btn-sm pull-right' %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <hr>
 
-<% if user_signed_in? %>
-  <%= link_to "Make Post", new_post_path, class: 'btn btn-success btn-md' %>
+<% if @posts.any? %>
+  <h4>Doge Discussion</h4>
+  <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table-condensed posts-index" width="100%">
+          <tr>
+            <td width="10%">
+              <%= image_tag post.user.avatar.url(:thumb), class: 'title-avatar-posts-index' %>
+              <small> <%= post.user.username %> </small>
+            </td>
+            <td width="80%">
+              <h4 id="post-title-header"><%= link_to post.title, post_path(post) %> </h4>
+              <p id="post-title-date">Posted on <%= post.created_at.to_date %></p>
+            </td>
+            <td width="10%">
+              <span class="label label-default"> <%= post.comments.count %> Comments </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <h5>Wow Such Empty!</h5>
 <% end %>
