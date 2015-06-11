@@ -18,19 +18,23 @@
               :method => 'delete' }, :class => 'btn btn-danger btn-sm' %>
           </td>
         <% end %>
-        <td class="post-title-vote" width="10%">
+        <% if user_signed_in? && current_user.id != @post.user_id %>
+          <td class="post-title-vote" width="10%">
+            <%= link_to post_vote_path(@post, upvote: true), class: 'btn btn-success btn-xs', method: 'post' do %>
+              <span class='glyphicon glyphicon-triangle-top'></span>
+            <% end %>
 
-          <%= link_to post_vote_path(@post, upvote: true), class: 'btn btn-success btn-xs', method: 'post' do %>
-            <span class='glyphicon glyphicon-triangle-top'></span>
-          <% end %>
+            <h4><span class="label label-default"><%= @post.total_score %> </span></h4>
 
-          <h4><span class="label label-default"><%= @post.total_score %> </span></h4>
-
-          <%= link_to post_vote_path(@post, upvote: false), class: 'btn btn-danger btn-xs', method: 'post' do %>
-            <span class='glyphicon glyphicon-triangle-bottom'></span>
-          <% end %>
-
-        </td>
+            <%= link_to post_vote_path(@post, upvote: false), class: 'btn btn-danger btn-xs', method: 'post' do %>
+              <span class='glyphicon glyphicon-triangle-bottom'></span>
+            <% end %>
+          </td>
+        <% else %>
+          <td class="post-title-vote" width="10%">
+            <h4><span class="label label-default"><%= @post.total_score %> </span></h4>
+          </td>
+        <% end %>
       </tr>
     </table>
   </div>
