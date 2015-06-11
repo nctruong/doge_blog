@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <table width="100%">
+      <tr>
+        <td width="10%">
+          <%= image_tag @post.user.avatar.url(:thumb), class: 'title-avatar' %>
+        </td>
+        <td>
+          <h3 class="no-margin"> <%= @post.title %> </h3>
+          <h4 class="no-margin sub-title">
+            Posted <%= time_ago_in_words(@post.created_at) %> ago on <%= @post.created_at.to_date %>
+          </h4>
+        </td>
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+          <td class="post-title-area" width="10%">
+            <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary btn-sm' %>
+            <%= link_to 'Delete', post_path(@post), :data => {:confirm => 'Are you sure?',
+              :method => 'delete' }, :class => 'btn btn-danger btn-sm' %>
+          </td>
+        <% end %>
+        <td class="post-title-vote" width="10%">
+
+          <%= link_to post_vote_path(@post, upvote: true), class: 'btn btn-success btn-xs', method: 'post' do %>
+            <span class='glyphicon glyphicon-triangle-top'></span>
+          <% end %>
+
+          <h4><span class="label label-default"><%= @post.total_score %> </span></h4>
+
+          <%= link_to post_vote_path(@post, upvote: false), class: 'btn btn-danger btn-xs', method: 'post' do %>
+            <span class='glyphicon glyphicon-triangle-bottom'></span>
+          <% end %>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root :to => 'posts#index'
 
   resources :posts do
+    post 'vote'
     resources :comments, :except => [:index] do
       post 'vote'
     end

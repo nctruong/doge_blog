@@ -50,6 +50,26 @@ class PostsController < ApplicationController
     end
   end
 
+  def vote
+    @post = Post.find(params[:post_id])
+    vote = Vote.find_by(voteable: @post, user_id: current_user.id)
+    if vote == nil
+      Vote.create(voteable: @post, user_id: current_user.id, upvote: params[:upvote])
+      redirect_to post_path(@post)
+      flash[:success] = "Voted!"
+    else
+      vote.assign_attributes(upvote: params[:upvote])
+      if vote.changed?
+        vote.save
+        redirect_to post_path(@post)
+        flash[:success] = "Vote Updated!"
+      else
+        redirect_to post_path(@post)
+        flash[:danger] = "You may upvote or downvote once!"
+      end
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :post_text)

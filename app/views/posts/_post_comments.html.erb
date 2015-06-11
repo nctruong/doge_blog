@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 id="comments-title-heading"><%= @post.comments.count %> Comments </h4>
+        <% if user_signed_in? %>
+          <%= link_to 'Add Comment', new_post_comment_path(@post),
+          :class => 'h4',
+          id: "new_comment_link", remote: true %>
+        <% end %>
+      </div>
+    </div>
+    <% if @post.comments.any? %>
+      <div class="well well-sm">
+        <table id="current_comments" class="table-bordered" width="100%">
+          <%= render @post.comments.order('created_at ASC') %>
+        </table>
+      </div>
+    <% else %>
+      <h6 id="comment_empty">Speak!</h6>
+    <% end %>
+  </div>
+</div>

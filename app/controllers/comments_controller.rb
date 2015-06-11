@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
     if vote == nil
       Vote.create(voteable: @comment, user_id: current_user.id, upvote: params[:upvote])
       redirect_to post_path(@post)
-      flash[:success] = "Vote Created!"
+      flash[:success] = "Voted!"
     else
       vote.assign_attributes(upvote: params[:upvote])
       if vote.changed?
@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
         flash[:success] = "Vote Updated!"
       else
         redirect_to post_path(@post)
-        flash[:danger] = "Already Voted!"
+        flash[:danger] = "You may upvote or downvote once!"
       end
     end
   end
