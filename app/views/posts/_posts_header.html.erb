@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="posts-user-area" width="100%">
+      <tr>
+        <td width="12%">
+          <h4 id="posts-index-count"><%= @posts.count %> Active Posts</h4>
+        </td>
+        <% if user_signed_in? %>
+          <td>
+            <h4 class="pull-right">Hello <%= current_user.username %>! </h4>
+          </td>
+          <td width="8%">
+              <%= link_to "Such Post!", new_post_path, class: 'btn btn-warning btn-sm pull-right' %>
+          </td>
+        <% else  %>
+          <td>
+            <h4 class="pull-right">Hello Guest! </h4>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>

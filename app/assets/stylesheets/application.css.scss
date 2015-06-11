@@ -27,6 +27,9 @@ body {
   margin-bottom: 80px;
   padding-bottom: 20px;
 }
+.inline {
+  display: inline;
+}
 
 .well-sm {
   border-radius: 0px;
@@ -48,6 +51,23 @@ body {
   transform: translateX(-50%) translateY(-50%);
 }
 
+.vertical-align {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.alert-notice {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-alert {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
 // Avatars
 
 .main-avatar {
@@ -66,19 +86,22 @@ body {
 
 // Main Post Page
 
-.posts-index {
-  padding: 5px;
+.posts-user-area {
+  border-left: 5px solid #00ccff;
+  margin-bottom: 10px;
+}
+
+#posts-index-count {
+  padding-left: 10px;
+}
+
+.main-posts-table {
   margin-bottom: 5px;
   border: 1px solid #eee;
   border-left-width: 5px;
   border-left-color: orange;
   border-radius: 3px;
   text-align: center;
-}
-
-.post-index-user {
-  display: flex;
-  align-items: center;
 }
 
 // Post Title Display

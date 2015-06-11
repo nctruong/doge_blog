@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table-condensed main-posts-table" width="100%">
+      <tr>
+        <td width="10%">
+          <%= image_tag post.user.avatar.url(:thumb), class: 'title-avatar-posts-index' %>
+          <small> <%= post.user.username %> </small>
+        </td>
+        <td width="80%">
+          <h4 id="post-title-header"><%= link_to post.title, post_path(post) %> </h4>
+          <p id="post-title-date">Posted on <%= post.created_at.to_date %></p>
+        </td>
+        <td width="10%">
+          <span class="label label-default"> <%= post.comments.count %> Comments </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
