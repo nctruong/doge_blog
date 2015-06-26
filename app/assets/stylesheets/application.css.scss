@@ -75,7 +75,7 @@ body {
 
 .main-avatar {
 }
-.title-avatar {
+.single-post-avatar {
   border-right: 1px solid grey;
   padding-right: 15px;
 }
@@ -106,13 +106,16 @@ body {
   text-align: left;
 }
 
-// Post Title Display
+// Single Post Title Display
 
-.post-title-area {
-  text-align: center;
+#single-post-avatar-area {
+  width: 106px;
 }
 
 .post-title-vote {
+  text-align: center;
+}
+.post-title-score {
   text-align: right;
 }
 

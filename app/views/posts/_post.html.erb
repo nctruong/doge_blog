@@ -7,12 +7,12 @@
           <small> <%= post.user.username %> </small>
         </td>
         <td class="main-posts-text">
-          <h4 id="post-title-header"><%= link_to post.title, post_path(post) %> </h4>
-          <p id="post-title-date">Posted on <%= post.created_at.to_date %></p>
+          <h4><%= link_to post.title, post_path(post) %> </h4>
+          <p>Posted on <%= post.created_at.to_date %></p>
           <span class="label label-info"> <%= post.comments.count %> Comments </span>
         </td>
         <td width="10%">
-          <span class="badge big-text"> <%= post.total_score %> </span>
+          <h4><span class="label label-primary"> <%= post.total_score %> </span></h4>
         </td>
       </tr>
     </table>
