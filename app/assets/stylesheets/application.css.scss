@@ -125,6 +125,9 @@ body {
 .main-posts-text{
   text-align: left;
 }
+.post-score-area {
+  width: 100px;
+}
 
 // Single Post Title Display
 
@@ -182,7 +185,7 @@ body {
   float:right;
   font-size: 70%;
 }
-#comment-voting-area {
+.comment-voting-area {
   width: 80px;
 }
 

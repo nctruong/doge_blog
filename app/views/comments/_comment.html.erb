@@ -11,14 +11,14 @@
     <%= comment.comment_text %>
   </td>
   <% if user_signed_in? && current_user.id == comment.user_id%>
-    <td class="comment-controls" id="comment-voting-area">
+    <td class="comment-controls comment-voting-area">
       <%= link_to '(edit)', edit_post_comment_path(@post, comment) %>
       <%= link_to '(delete)', post_comment_path(@post, comment),
                               :data => {:confirm => 'Are you sure?',
                               :method => 'delete' } %>
     </td>
   <% elsif user_signed_in? %>
-    <td class="comment-controls" id="comment-voting-area">
+    <td class="comment-controls comment-voting-area">
 
       <%= link_to post_comment_vote_path(@post, comment, upvote: true), method: 'post' do %>
         <span class='glyphicon glyphicon-arrow-up'></span>
