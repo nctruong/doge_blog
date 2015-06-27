@@ -17,4 +17,8 @@ class Post < ActiveRecord::Base
     self.votes.where(upvote: false).count
   end
 
+  def self.search(q)
+    where("title ILIKE ? OR post_text ILIKE ?", "%#{q}%", "%#{q}%")
+  end
+
 end

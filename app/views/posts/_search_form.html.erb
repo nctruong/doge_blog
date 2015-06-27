@@ -1,0 +1,4 @@
+<%= form_tag(posts_path, method: "get", class: 'pull-right') do %>
+  <%= text_field_tag :q, nil, class: 'custom-form-control' %>
+  <%= submit_tag "Search", class: 'btn btn-info btn-sm' %>
+<% end %>

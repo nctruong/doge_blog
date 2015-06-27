@@ -1,6 +1,6 @@
 <%= render 'main_posts_header' %>
 <% if @posts.any? %>
-  <%= render @posts.order('created_at ASC') %>
+  <%= render @posts %>
 <% else %>
   <h5>Wow Such Empty!</h5>
 <% end %>

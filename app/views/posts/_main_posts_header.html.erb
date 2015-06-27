@@ -5,15 +5,12 @@
         <td>
           <h4 id="posts-index-count"><%= @posts.count %> Active Posts</h4>
         </td>
-        <% if user_signed_in? %>
-          <td>
-            <%= link_to "Such Post!", new_post_path, class: 'btn btn-warning btn-sm pull-right' %>
-          </td>
-        <% else  %>
-          <td>
-            <h4 class="pull-right"><%= link_to "Log In", new_user_session_path %> <span>to post!</span> </h4>
-          </td>
-        <% end %>
+        <td>
+          <% if user_signed_in? %>
+            <%= link_to "Such Post!", new_post_path, class: 'btn btn-warning btn-sm pull-right', id: 'posts-index-search' %>
+          <% end %>
+          <%= render 'posts/search_form' %>
+        </td>
       </tr>
     </table>
   </div>
