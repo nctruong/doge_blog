@@ -23,13 +23,13 @@
           </td>
         <% elsif user_signed_in? && current_user.id != @post.user_id %>
           <td class="post-title-vote" width="2%">
-            <%= link_to post_vote_path(@post, upvote: true), class: 'btn btn-success btn-xs', method: 'post' do %>
+            <%= link_to post_vote_path(@post, upvote: true), class: 'btn btn-success btn-xs vote-post', method: 'post', remote: true do %>
               <span class='glyphicon glyphicon-triangle-top'></span>
             <% end %>
 
-            <h4><%= @post.total_score %> </h4>
+            <h4 id="post-total-score"><%= @post.total_score %> </h4>
 
-            <%= link_to post_vote_path(@post, upvote: false), class: 'btn btn-danger btn-xs', method: 'post' do %>
+            <%= link_to post_vote_path(@post, upvote: false), class: 'btn btn-danger btn-xs vote-post', method: 'post', remote: true do %>
               <span class='glyphicon glyphicon-triangle-bottom'></span>
             <% end %>
           </td>

@@ -1,10 +1,17 @@
 $('#comments-title-heading').hide();
 $('#new_comment_link').hide().after('<%= j render("form") %>');
+
+$('#comment_comment_text').keyup(function() {
+  var checkText = $(this).val();
+  if (checkText != "") {
+    $('#create-comment-button').removeClass("disabled");
+  } else {
+    $('#create-comment-button').addClass("disabled")
+  }
+  console.log(checkText);
+});
 $( "#just_kidding" ).click(function() {
   $('#new_comment_form').remove();
   $('#comments-title-heading').show();
   $('#new_comment_link').show();
-});
-$('#new_comment_form').submit(function() {
-  $('#comments-title-heading').show();
 });

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :show]
+  respond_to :html, :js
 
   def new
     @post = Post.find(params[:post_id])
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html { redirect_to post_path(@comment.post) }
-        format.js
+        format.js 
       end
     else
       render :new

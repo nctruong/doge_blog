@@ -1,4 +1,10 @@
-$('#new_comment_form').remove();
-$('#comment_empty').remove();
-$('#new_comment_link').show();
-$('#current_comments').append('<%= j render(@comment) %>');
+$("#new_comment").on('ajax:success', function(data, response) {
+  var pathName = window.location.pathname
+  console.log(pathName);
+  $.get( pathName, function( data ) {
+    var html = data
+    console.log(html);
+    var commentSection = $(html).find("#all-comments");
+    $("#all-comments").replaceWith(commentSection);
+  });
+});

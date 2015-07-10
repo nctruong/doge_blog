@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="all-comments">
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-12">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <% if @post.comments.any? %>
-      <div class="well well-sm">
+      <div class="well well-sm" id="post-comments-section">
         <table id="current_comments" class="table-bordered" width="100%">
           <%= render @post.comments.order('created_at ASC') %>
         </table>
