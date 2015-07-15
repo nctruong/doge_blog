@@ -11,7 +11,7 @@ $('#comment_comment_text').keyup(function() {
   console.log(checkText);
 });
 
-$( "#just-kidding" ).click(function() {
+$( "#just-kidding-<%= @post.id %>" ).click(function() {
   $('#new-comment-form').remove();
   $('#comments-title-heading').show();
   $('#new_comment_link').show();

@@ -12,7 +12,7 @@
   </td>
   <% if user_signed_in? && current_user.id == comment.user_id %>
     <td class="comment-controls comment-voting-area">
-      <%= link_to 'Edit', edit_post_comment_path(@post, comment), id: comment.id, class: 'btn btn-info btn-xs', remote: true %>
+      <%= link_to 'Edit', edit_post_comment_path(@post, comment), id: comment.id, class: 'btn btn-info btn-xs edit-comment', remote: true %>
       <p class="general-seperator"></p>
       <%= link_to 'Delete', post_comment_path(@post, comment),
                               :data => {:confirm => 'Are you sure?',
@@ -22,7 +22,7 @@
     <td class="comment-controls comment-voting-area">
 
       <%= link_to post_comment_vote_path(@post, comment, upvote: true), method: 'post' do %>
-        <span class='glyphicon glyphicon-arrow-up'></span>
+        <span class='glyphicon glyphicon-chevron-up'></span>
       <% end %>
 
       <br>
@@ -34,7 +34,7 @@
       <br>
 
       <%= link_to post_comment_vote_path(@post, comment, upvote: false), method: 'post' do %>
-        <span class='glyphicon glyphicon-arrow-down'></span>
+        <span class='glyphicon glyphicon-chevron-down'></span>
       <% end %>
 
     </td>

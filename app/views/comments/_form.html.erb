@@ -8,5 +8,5 @@
     </div>
     <%= f.submit 'Add Comment', :class => 'btn btn-success btn-xs disabled', id: 'create-comment-button' %>
   <% end %>
-  <button id="just-kidding" class="btn btn-danger btn-xs">Just Kidding</button>
+  <button id="just-kidding-<%= @post.id %>" class="btn btn-danger btn-xs">Just Kidding</button>
 </div>
