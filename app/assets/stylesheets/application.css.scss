@@ -36,6 +36,10 @@ body {
 .btn {
   border-radius: 0px;
 }
+.general-seperator{
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0px;
+}
 .custom-form-control {
   height: 30px;
   padding: 6px 12px;
@@ -191,10 +195,18 @@ body {
 
 // Comment Form
 
-#new_comment_form {
-  background-color: #fff;
-}
 #create-comment-button {
   float: left;
   margin-right: 5px;
+}
+.edit_comment {
+  display: inline;
+}
+#new-comment-form{
+  background-color: #fff;
+}
+#edit-comment-form{
+  background-color: #fff;
+  border: none;
+  margin-bottom: 0px;
 }

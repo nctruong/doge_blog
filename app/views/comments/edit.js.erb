@@ -1,0 +1,26 @@
+$("a#<%= @comment.id %>").addClass("disabled");
+$('#comment-number-<%= @comment.id %>').hide().after('<%= j render("edit_comment_form") %>');
+
+$('#comment_comment_text').keyup(function() {
+  var checkText = $(this).val();
+  if (checkText != "") {
+    $('#update-comment-button').removeClass("disabled");
+  } else {
+    $('#update-comment-button').addClass("disabled")
+  }
+  console.log(checkText);
+});
+
+$("#just-kidding").click(function() {
+  $("a#<%= @comment.id %>").removeClass("disabled");
+  $('#edit-comment-form').remove();
+  $('#comment-number-<%= @comment.id %>').show();
+});
+
+$('#edit-comment-form').on('ajax:success', function(data, response) {
+  console.log(response);
+  var html = response;
+  $('#edit-comment-form').remove();
+  $("a#<%= @comment.id %>").removeClass("disabled");
+  $('#comment-number-<%= @comment.id %>').replaceWith( $(html).find('#comment-number-<%= @comment.id %>') ).show();
+});

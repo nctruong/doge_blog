@@ -1,0 +1,9 @@
+<div class="well well-sm" id="edit-comment-form">
+  <%= form_for([@post, @comment], remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :comment_text, :class => 'form-control' %>
+    </div>
+    <%= f.submit 'Update Comment', :class => 'btn btn-success btn-xs', id: 'update-comment-button' %>
+  <% end %>
+  <button id="just-kidding" class="btn btn-danger btn-xs">Just Kidding</button>
+</div>

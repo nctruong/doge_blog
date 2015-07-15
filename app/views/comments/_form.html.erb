@@ -1,6 +1,6 @@
 <%= render('layouts/errors', :object => @comment) %>
 
-<div class="well well-sm" id="new_comment_form">
+<div class="well well-sm" id="new-comment-form">
   <%= form_for([@post, @comment], remote: true) do |f| %>
     <div class="form-group">
       <%= f.label :comment_text, 'Enter Comment', class: 'small' %>
@@ -8,5 +8,5 @@
     </div>
     <%= f.submit 'Add Comment', :class => 'btn btn-success btn-xs disabled', id: 'create-comment-button' %>
   <% end %>
-  <button id="just_kidding" class="btn btn-danger btn-xs">Just Kidding</button>
+  <button id="just-kidding" class="btn btn-danger btn-xs">Just Kidding</button>
 </div>
