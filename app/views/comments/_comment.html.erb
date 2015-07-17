@@ -6,7 +6,7 @@
       <small id="user-comment-count">comments: <%= comment.user.comments.count %></small>
     </div>
   </td>
-  <td class="comment-text" id="comment-number-<%= comment[:id] %>">
+  <td class="comment-text" id="comment-number-<%= comment.id %>">
     <small id="comment-timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago on <%= comment.created_at.to_date %></small>
     <%= comment.comment_text %>
   </td>

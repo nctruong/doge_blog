@@ -1,4 +1,5 @@
 $("#new_comment").on('ajax:success', function(data, response) {
+  $(".panel-danger").slideUp();
   var pathName = window.location.pathname
   console.log(pathName);
   $.get( pathName, function( data ) {

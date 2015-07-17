@@ -30,6 +30,9 @@ body {
   width: auto !important;  /* Firefox will set width as auto */
   width:550px;
 }
+textarea {
+  resize: vertical;
+}
 .inline {
   display: inline;
 }
@@ -60,6 +63,9 @@ body {
 }
 .sub-title {
   color: #a0a0a0;
+}
+.well{
+  margin-bottom: 0px;
 }
 .well-sm {
   border-radius: 0px;
@@ -204,9 +210,16 @@ body {
 }
 #new-comment-form{
   background-color: #fff;
+  margin-bottom: 0px;
+  border: none;
 }
 #edit-comment-form{
   background-color: #fff;
   border: none;
   margin-bottom: 0px;
+}
+.comment-errors{
+  margin: 0px;
+  padding-left: 25px;
+  display: inline-block;
 }

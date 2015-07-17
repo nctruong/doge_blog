@@ -1,0 +1,24 @@
+<div class="well well-sm" id="post-comments-section">
+  <table id="current_comments" class="table-bordered" width="100%">
+    <tr id="form-row">
+      <td width="10%">
+        <div class="comment-avatar">
+          <%= image_tag current_user.avatar.url(:comment) %><br>
+          <small id="user-comment-name"><%= current_user.username %></small> <br>
+          <small id="user-comment-count">comments: <%= current_user.comments.count %></small>
+        </div>
+      </td>
+      <td colspan="2">
+        <div class="well well-sm" id="new-comment-form">
+          <%= form_for([@post, @comment], remote: true) do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment_text, :placeholder => 'Type something here...', :class => 'form-control' %>
+            </div>
+            <%= f.submit 'Add Comment', :class => 'btn btn-success btn-xs disabled', id: 'create-comment-button' %>
+          <% end %>
+          <button id="just-kidding-<%= @post.id %>" class="btn btn-danger btn-xs">Just Kidding</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

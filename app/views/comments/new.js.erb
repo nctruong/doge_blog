@@ -1,18 +1,44 @@
-$('#comments-title-heading').hide();
-$('#new_comment_link').hide().after('<%= j render("form") %>');
+$(".comment-errors").remove();
 
-$('#comment_comment_text').keyup(function() {
+<% if @post.comments.count == 0 %>
+  <% if @comment.errors.any? %>
+    $('#new-comment-form').append("<%= j render('layouts/comment_errors', :object => @comment) %>");
+    event.prevenDefault();
+  <% end %>
+  $("#comments-title-heading").hide();
+  $("#new_comment_link").hide();
+  $("#comment_empty").hide().after("<%= j render('no_comments_form') %>");
+
+  $( "#just-kidding-<%= @post.id %>" ).click(function() {
+    $("#new_comment_link").show();
+    $("#comments-title-heading").show();
+    $("#post-comments-section").remove();
+    $("#comment_empty").show();
+  });
+<% else %>
+<% if @comment.errors.any? %>
+  $('#new-comment-form').append("<%= j render('layouts/comment_errors', :object => @comment) %>");
+  event.prevenDefault();
+<% end %>
+  $("#comments-title-heading").hide();
+  $("#new_comment_link").hide();
+  $("#current_comments").append("<%= j render('form') %>");
+  var element = document.getElementById("form-row");
+  element.scrollIntoView();
+
+  $( "#just-kidding-<%= @post.id %>" ).click(function() {
+    $("#new_comment_link").show();
+    $("#comments-title-heading").show();
+    $("#form-row").remove();
+  });
+<% end %>
+
+$("#comment_comment_text").keyup(function() {
   var checkText = $(this).val();
   if (checkText != "") {
-    $('#create-comment-button').removeClass("disabled");
+    $("#create-comment-button").removeClass("disabled");
   } else {
-    $('#create-comment-button').addClass("disabled")
+    $("#create-comment-button").addClass("disabled")
   }
   console.log(checkText);
-});
-
-$( "#just-kidding-<%= @post.id %>" ).click(function() {
-  $('#new-comment-form').remove();
-  $('#comments-title-heading').show();
-  $('#new_comment_link').show();
 });

@@ -1,0 +1,7 @@
+<% if object.errors.any? %>
+  <ul class="comment-errors ">
+    <% object.errors.full_messages.each do |message| %>
+      <li class="bg-danger text-danger"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
