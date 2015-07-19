@@ -1,0 +1,7 @@
+$('#post-form').remove();
+$(".post-text").hide().after("<%= j render('update_post_form') %>");
+
+$("#cancel-post-update-<%= @post.id %>").click(function() {
+  $('#post-form').remove();
+  $('.post-text').show();
+});

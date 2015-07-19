@@ -8,21 +8,20 @@
         <td>
           <h3 class="no-margin"> <%= @post.title %> </h3>
           <h4 class="no-margin sub-title">
-            Posted <%= time_ago_in_words(@post.created_at) %> ago on <%= @post.created_at.to_date %>
+            Posted <%= time_ago_in_words(@post.created_at) %> ago <br> <%= @post.created_at.to_date %>
           </h4>
         </td>
         <% if user_signed_in? && current_user.id == @post.user_id %>
-          <td>
+          <td id="post-title-manage">
+            <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary btn-sm', remote: true %> |
             <%= link_to 'Delete', post_path(@post), :data => {:confirm => 'Are you sure?',
-            :method => 'delete' }, :class => 'btn btn-danger btn-xs pull-right' %>
-            <br>
-            <%= link_to 'Edit', edit_post_path(@post), :class => 'btn btn-primary btn-xs pull-right' %>
+            :method => 'delete' }, :class => 'btn btn-danger btn-sm' %>
           </td>
-          <td class="post-title-score">
-            <p class="big-text no-margin"><span class="label label-default"> <%= @post.total_score %> </span></p>
+          <td id="post-title-score">
+            <p class="big-text no-margin"> <%= @post.total_score %> </p>
           </td>
         <% elsif user_signed_in? && current_user.id != @post.user_id %>
-          <td class="post-title-vote" width="2%">
+          <td id="post-title-vote" width="2%">
             <%= link_to post_vote_path(@post, upvote: true), class: 'btn btn-success btn-xs vote-post', method: 'post', remote: true do %>
               <span class='glyphicon glyphicon-triangle-top'></span>
             <% end %>
@@ -34,7 +33,7 @@
             <% end %>
           </td>
         <% else %>
-          <td class="post-title-score">
+          <td id="post-title-score">
             <p class="big-text no-margin"><span class="label label-default"> <%= @post.total_score %> </span></p>
           </td>
         <% end %>

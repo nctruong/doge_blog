@@ -145,16 +145,25 @@ textarea {
   width: 106px;
 }
 
-.post-title-vote {
+#post-title-vote {
   text-align: center;
 }
-.post-title-score {
+#post-title-score {
+  width: 40px;
+  text-align: center;
+}
+#post-title-manage {
+  width: 121px;
   text-align: right;
 }
 
 // Post Text
 
 .post-text {
+}
+
+#update-post-button {
+  margin-right: 5px;
 }
 
 // Comment Title Area
