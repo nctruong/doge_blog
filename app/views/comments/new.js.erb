@@ -1,14 +1,13 @@
 $(".comment-errors").remove();
 
-<% if @post.comments.count == 0 %>
-  <% if @comment.errors.any? %>
-    $('#new-comment-form').append("<%= j render('layouts/comment_errors', :object => @comment) %>");
-    event.prevenDefault();
-  <% end %>
+<% if @comment.errors.any? %>
+  $('#new-comment-form').append("<%= j render('layouts/comment_errors', :object => @comment) %>");
+  event.prevenDefault();
+<% end %>
   $("#comments-title-heading").hide();
   $("#new_comment_link").hide();
+<% if @post.comments.count == 0 %>
   $("#comment_empty").hide().after("<%= j render('no_comments_form') %>");
-
   $( "#just-kidding-<%= @post.id %>" ).click(function() {
     $("#new_comment_link").show();
     $("#comments-title-heading").show();
@@ -16,12 +15,6 @@ $(".comment-errors").remove();
     $("#comment_empty").show();
   });
 <% else %>
-<% if @comment.errors.any? %>
-  $('#new-comment-form').append("<%= j render('layouts/comment_errors', :object => @comment) %>");
-  event.prevenDefault();
-<% end %>
-  $("#comments-title-heading").hide();
-  $("#new_comment_link").hide();
   $("#current_comments").append("<%= j render('form') %>");
   var element = document.getElementById("form-row");
   element.scrollIntoView();
@@ -31,6 +24,7 @@ $(".comment-errors").remove();
     $("#comments-title-heading").show();
     $("#form-row").remove();
   });
+
 <% end %>
 
 $("#comment_comment_text").keyup(function() {

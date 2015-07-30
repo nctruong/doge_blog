@@ -1,9 +1,8 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :post
-
   has_many :votes, :as => :voteable
-  validates :comment_text, :presence => true
+  validates :comment_text, presence: true
 
   def total_score
     self.up_votes - self.down_votes

@@ -138,6 +138,11 @@ textarea {
 .post-score-area {
   width: 100px;
 }
+// New Post Page
+
+#cancel-post-button {
+  margin-right: 5px;
+}
 
 // Single Post Title Display
 
@@ -194,13 +199,13 @@ textarea {
   vertical-align: top;
   padding: 5px;
 }
-#user-comment-name {
+.user-comment-name {
   font-size: 90%;
 }
-#user-comment-count {
+.user-comment-count {
   font-size: 75%;
 }
-#comment-timestamp {
+.comment-timestamp {
   float:right;
   font-size: 70%;
 }
@@ -211,6 +216,10 @@ textarea {
 // Comment Form
 
 #create-comment-button {
+  float: left;
+  margin-right: 5px;
+}
+#reply-comment-button {
   float: left;
   margin-right: 5px;
 }
@@ -231,4 +240,25 @@ textarea {
   margin: 0px;
   padding-left: 25px;
   display: inline-block;
+}
+
+// Reply Form
+
+.quote-header{
+  font-size: 13px;
+  font-family: "Open Sans Semibold", "Open Sans", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #333;
+}
+
+.reply-quote {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background-color: #E0E0E0;
+  color: #666;
+  padding: 6px;
+  margin-bottom: 8px;
+  border-radius: 3px;
 }

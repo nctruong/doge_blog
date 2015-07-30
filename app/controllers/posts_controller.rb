@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :show]
+  respond_to :html, :js
 
   def index
     @posts = Post.search(params[:q]).order("created_at DESC")

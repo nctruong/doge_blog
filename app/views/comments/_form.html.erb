@@ -2,8 +2,8 @@
   <td width="10%">
     <div class="comment-avatar">
       <%= image_tag current_user.avatar.url(:comment) %><br>
-      <small id="user-comment-name"><%= current_user.username %></small> <br>
-      <small id="user-comment-count">comments: <%= current_user.comments.count %></small>
+      <small class="user-comment-name"><%= current_user.username %></small> <br>
+      <small class="user-comment-count">comments: <%= current_user.comments.count %></small>
     </div>
   </td>
   <td colspan="2">

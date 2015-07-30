@@ -1,3 +1,8 @@
+<% if @comment.errors.any? %>
+  $('#edit-comment-form').append("<%= j render('layouts/comment_errors', :object => @comment) %>");
+  event.prevenDefault();
+<% end %>
+
 $(".edit-comment").addClass("disabled");
 $('#comment-number-<%= @comment.id %>').hide().after('<%= j render("edit_comment_form") %>');
 

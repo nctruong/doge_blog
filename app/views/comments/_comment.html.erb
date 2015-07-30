@@ -1,15 +1,18 @@
 <tr>
+
   <td width="10%">
     <div class="comment-avatar">
       <%= image_tag comment.user.avatar.url(:comment) %><br>
-      <small id="user-comment-name"><%= comment.user.username %></small> <br>
-      <small id="user-comment-count">comments: <%= comment.user.comments.count %></small>
+      <small class="user-comment-name"><%= comment.user.username %></small> <br>
+      <small class="user-comment-count">comments: <%= comment.user.comments.count %></small>
     </div>
   </td>
-  <td class="comment-text" id="comment-number-<%= comment.id %>">
-    <small id="comment-timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago on <%= comment.created_at.to_date %></small>
-    <%= comment.comment_text %>
+
+  <td class="comment-text">
+    <small class="comment-timestamp">Posted <%= time_ago_in_words(comment.created_at) %> ago on <%= comment.created_at.to_date %></small>
+    <span id="comment-number-<%= comment.id %>"> <%= comment.comment_text %> </span>
   </td>
+
   <% if user_signed_in? && current_user.id == comment.user_id %>
     <td class="comment-controls comment-voting-area">
       <%= link_to 'Edit', edit_post_comment_path(@post, comment), id: comment.id, class: 'btn btn-info btn-xs edit-comment', remote: true %>
@@ -43,4 +46,5 @@
       <span class="label label-default"><%= comment.total_score %></span>
     </td>
   <% end %>
+  
 </tr>
