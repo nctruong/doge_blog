@@ -1,10 +1,5 @@
 ## Ruby On Rails Blog
 
-Allows a user to post blog entries with comment support and text message notifications.
-
-On Heroku:
-https://sleepy-hamlet-7255.herokuapp.com/
-
 ### Setup Instructions
 Requires PostgreSQL
 
